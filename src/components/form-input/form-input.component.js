@@ -2,6 +2,7 @@ import React from 'react';
 
 import './form-input.styles.scss';
 
+{/* Below line props comes from sign-in.component */}
 
 const FormInput = ({ handleChange, label, ...otherProps}) => (
 
@@ -10,7 +11,7 @@ const FormInput = ({ handleChange, label, ...otherProps}) => (
    {
    	label ? (
    	<label className={ `${otherProps.value.length ? 'shrink' : '' } form-input-label`}>
-   		{label}
+   		{label}   
    	</label>)
    	: null
 

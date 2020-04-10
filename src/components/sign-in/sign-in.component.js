@@ -34,7 +34,7 @@ handleChange= event => {
  		  <span> Sign in with your email and Password </span>
 
 	<form onSubmit={this.handleSubmit}>
-	    <FormInput 
+	    <FormInput  
 	    name='email' 
 		type='email' 
 		value={this.state.email} 
@@ -43,7 +43,8 @@ handleChange= event => {
 		required 
 		/>
 		
-		
+ { /* This <FormInput comes from form-input component when we click these changes will go as props to form-input.component */ }
+	
 		
 		<FormInput 
 		name='password' 
@@ -54,10 +55,17 @@ handleChange= event => {
 		required
 		/>
 		
-		
-		
+		{/* belowattributes passed as props to custom-button.component*/}
+
+
+		<div className='buttons'>
 		<CustomButton type='submit' > Sign In  </CustomButton>
-		<CustomButton onClick={signInWithGoogle} > Sign In with Google </CustomButton>
+		<CustomButton onClick={signInWithGoogle} isGoogleSignIn> 
+		     Sign In with Google 
+		</CustomButton>
+		
+		</div>
+	
 	</form>
 	</div>
  		)

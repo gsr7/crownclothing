@@ -19,6 +19,7 @@ const config=  {
   export const auth= firebase.auth();
   export const firestore = firebase.firestore();
 
+{/* below line : this provides access to GoogleAuthProvider class from auth library */}
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({prompt:'select_account'});
   export const signInWithGoogle = () => auth.signInWithPopup(provider);
