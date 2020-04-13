@@ -14,6 +14,44 @@ const config=  {
     measurementId: "G-HEG1DFD6BV"
   };
 
+{/*  below function get parameter userAuth from App.js,
+ if userAuth does not exist it return...
+ firestore.doc give user reference and will get snapshot from it.
+ if snapShot not exist create it in firebase database called "firestore " by using set().
+ and at end return userRef
+ ALL THE BELOW CODE IS ABOUT SAVING USER WHO LOGS USING GOOGLE..DATA SAVES FROM AUTH TO FIRSTORE
+    */}
+
+
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if(!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+
+  if(!snapShot.exists){
+    const {displayName,email} = userAuth;
+    const createdAt = new Date();
+
+    try{
+    await userRef.set({
+      displayName,
+      email,
+      createdAt,
+      ...additionalData
+    }) 
+
+    }catch(error){
+      console.log('error creating user', error.message);
+    }
+
+  }//if
+  return userRef
+
+};
+
+
+
   firebase.initializeApp(config);
 
   export const auth= firebase.auth();
