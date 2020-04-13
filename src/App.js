@@ -15,29 +15,24 @@ class App extends React.Component {
     };
   }
 
+
+
+
   unsubscribeFromAuth = null;
-
-{/*
-  Below code get userAuth after user logs in using Google account, if userAuth exists,call the
-  function in firebase.utils.js. Apply onSnapshot function on userRef to set state in the App.js
-
-ALL THIS CODE ABOUT SAVING USER LOGIN DATA FROM FIRESTORE TO APP STATE.
-    */}
-
-
   componentDidMount(){
      this.unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
       if(userAuth){
-         const userRef = createUserProfileDocument(userAuth);
+         const userRef = await createUserProfileDocument(userAuth);
          userRef.onSnapshot( snapShot =>{
 
           this.setState({
             currentUser:{
               id:snapShot.id, ...snapShot.data() 
             }
-          }, ()=>{ console.log(this.state)
           
-          })
+          
+          });
+          console.log(this.state);
 
          })
 
