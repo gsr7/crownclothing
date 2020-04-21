@@ -1,4 +1,4 @@
-
+import {UserActionTypes} from './user.types';
 
 const INITIAL_STATE = { currentUser: null }
 
@@ -18,4 +18,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
 
 export default userReducer;
 
-{/* ...state - gives all the values of the state and update currentUser       */}
+{/* A reducer is a function that taks two arguments....
+...state - gives all the values of the state and update currentUser      
+- user.reducer code has written first  */}
